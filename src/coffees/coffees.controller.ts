@@ -14,31 +14,31 @@ import { UpdateCoffeeDto } from './dto/update-coffee.dto';
 
 @Controller('coffees')
 export class CoffeesController {
-    constructor(private readonly coffeesServece: CoffeesService) {}
+    constructor(private readonly coffeesService: CoffeesService) {}
 
     @Get()
     findAll(@Query() paginationQuery: PaginationQueryDto) {
         // const { limit, offset } = paginationQuery;
-        return this.coffeesServece.findAll(paginationQuery);
+        return this.coffeesService.findAll(paginationQuery);
     }
 
     @Get(':id')
     findOne(@Param('id') id: string) {
-        return this.coffeesServece.findOne(id) ;
+        return this.coffeesService.findOne(id) ;
     }
     
     @Post()
     create(@Body() createCoffeeDto: CreateCoffeeDto) {
-        return this.coffeesServece.create(createCoffeeDto);
+        return this.coffeesService.create(createCoffeeDto);
     }
 
     @Patch(':id')
     update(@Param('id') id: string, @Body() updateCoffeeDto: UpdateCoffeeDto) {
-        return this.coffeesServece.update(id, updateCoffeeDto);
+        return this.coffeesService.update(id, updateCoffeeDto);
     }
 
     @Delete(':id')
     remove(@Param('id') id: string) {
-        return this.coffeesServece.remove(id)
+        return this.coffeesService.remove(id)
     }
 }
